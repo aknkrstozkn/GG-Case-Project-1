@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Sprite coverSprite = null;
     [SerializeField] Sprite[] frameSprites = null;
     
+    [Header("Other")]
     [SerializeField] const int TravelCount = 9;
-    [SerializeField] float StartTravelTime = 0.2f;
     private float _elapsedTime = 0f;
     private int _traveledCount = 0;
     private bool _travel = false;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         return frameSprites[index];
     }
 
-    void SelectSkinBox(SkinBox skinBox)
+    void SetCurrentSkinBox(SkinBox skinBox)
     {
         if(_currentSkinBox != null)
         {
@@ -62,9 +62,9 @@ public class GameManager : MonoBehaviour
         {
             ChooseSkinbox();
         }
-
-        if(inactiveSkinBoxes.Count == 0 && !_travel)
+        else if(inactiveSkinBoxes.Count == 0)
         {
+            // End
             enabled = false;
         }        
     }
@@ -74,15 +74,17 @@ public class GameManager : MonoBehaviour
         _elapsedTime += Time.deltaTime;
 
         var isFinal = _traveledCount == TravelCount || inactiveSkinBoxes.Count == 0;
-        var select = _elapsedTime >= _traveledCount / 10f;
+        var inTime = _elapsedTime >= _traveledCount / 10f;
 
-        if (!isFinal && select) 
+        if (!isFinal && inTime) 
         {
+            // Reset time
             _elapsedTime = 0f;
+
             ++_traveledCount;
-            SetCurrentSkinBox();
+            SelectSkinBox();
         } 
-        else if(isFinal && select)
+        else if(isFinal && inTime)
         {
             _elapsedTime = 0f;
             _currentSkinBox.Activate();
@@ -98,15 +100,15 @@ public class GameManager : MonoBehaviour
         _traveledCount = 0;
     }
 
-    void SetCurrentSkinBox()
+    void SelectSkinBox()
     {       
         var index = Random.Range(0, inactiveSkinBoxes.Count);
         if(_currentSkinBox != null)
         {
             inactiveSkinBoxes.Add(_currentSkinBox);
-        }        
-        SelectSkinBox(inactiveSkinBoxes[index]);
-
+        }
+        
+        SetCurrentSkinBox(inactiveSkinBoxes[index]);
         inactiveSkinBoxes.RemoveAt(index);       
     }
 }
