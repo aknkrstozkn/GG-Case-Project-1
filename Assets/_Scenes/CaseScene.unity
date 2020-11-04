@@ -206,7 +206,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fe6c6fcd7fc4f45cfb29d58bd3d60aa1, type: 3}
   - {fileID: 21300000, guid: 1c0ff726173f14ad09db52498907e676, type: 3}
   - {fileID: 21300000, guid: 74b9f7eae478b4594a1b2aa6c5831d47, type: 3}
-  StartTravelTime: 0.5
 --- !u!114 &250549738 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1947997484365744620, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
@@ -1020,17 +1019,22 @@ PrefabInstance:
     - target: {fileID: 1947997484156511973, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.47843137
       objectReference: {fileID: 0}
     - target: {fileID: 1947997484156511973, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.47843137
       objectReference: {fileID: 0}
     - target: {fileID: 1947997484156511973, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 0.47843137
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947997484156511973, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1947997484156511975, guid: ceb96ee6a27bc4ebdbedf5ef4c0f40b3,
         type: 3}
